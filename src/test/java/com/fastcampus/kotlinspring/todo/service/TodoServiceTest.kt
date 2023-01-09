@@ -12,6 +12,15 @@ import org.springframework.data.repository.findByIdOrNull
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import java.time.LocalDateTime
 
+fun Todo.Companion.fixture() = Todo(
+    id = 1,
+    title = "테스트",
+    description = "테스트 상세",
+    done = false,
+    createdAt = LocalDateTime.now(),
+    updatedAt = LocalDateTime.now(),
+)
+
 @ExtendWith(SpringExtension::class)
 class TodoServiceTest {
 
@@ -20,16 +29,7 @@ class TodoServiceTest {
 
     lateinit var service: TodoService
 
-    val stub : Todo by lazy {
-        Todo(
-            id = 1,
-            title = "테스트",
-            description = "테스트 상세",
-            done = false,
-            createdAt = LocalDateTime.now(),
-            updatedAt = LocalDateTime.now(),
-        )
-    }
+    val stub : Todo by lazy { Todo.fixture() }
 
     @BeforeEach
     fun setUp() {

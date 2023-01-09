@@ -32,4 +32,8 @@ class Todo(
        this.done = done
        this.updatedAt = LocalDateTime.now()
     }
+
+    companion object {
+
+    }
 }

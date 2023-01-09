@@ -12,10 +12,7 @@ import javax.persistence.Table;
 import lombok.*;
 
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Builder
+
 @Entity
 @Table(name = "todos")
 public class Todo {
@@ -39,6 +36,43 @@ public class Todo {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    public Todo() {
+    }
+
+    public Todo(Long id, String title, String description, Boolean done, LocalDateTime createdAt,
+        LocalDateTime updatedAt) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.done = done;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Boolean getDone() {
+        return done;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
 
     public void update(String title, String description, Boolean done) {
         this.title = title;

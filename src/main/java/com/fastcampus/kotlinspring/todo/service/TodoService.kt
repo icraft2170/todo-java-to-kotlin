@@ -27,20 +27,19 @@ class TodoService (
     @Transactional
     fun create(request: TodoRequest?): Todo {
         checkNotNull(request) { "TodoRequest is null" }
-            return todoRepository.save( Todo(
-                title = request.title,
-                description = request.description,
-                done = false,
-                createdAt = LocalDateTime.now(),
-            )
-        )
+        return todoRepository.save(Todo(
+            title = request.title,
+            description = request.description,
+            done = false,
+            createdAt = LocalDateTime.now(),
+        ))
     }
 
     @Transactional
     fun update(
         id: Long,
         request: TodoRequest?
-    ) {
+    ): Todo {
         checkNotNull(request) { "TodoRequest is null" }
         return findById(id).let {
             it.update(request.title, request.description, request.done,)
